@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       //콜백함수(Call back)
+      //함수를 호출하는 시점이 바뀌어진 형태의 함수
+      //기존방식 : 사용자(개발자)가 함수를 직접정의 ->정의된 함수를 호출(Call)하여 결과를 반환받는 방식
+      //Callback: 콜백함수에 인자로 로직이담긴 함수를(함수주소)를 전달하여 콜백함수로부터 처리된 결과를
+      //반환받는 방식
+
+      //일반함수
+      function func(n1, n2) {
+        console.log("func(n1,n2) Call!");
+        return n1 + n2;
+      }
+      //Call
+      // const v1=func(10,20)
+      // console.log("v1",v1)
+
+      //콜백함수
+      function callBackFunc(n1, n2, logic) {
+        console.log("callBackFunc..start");
+        const v = logic(n1, n2);
+        console.log("v", v);
+        console.log("callBackFunc..end");
+      }
+      callBackFunc(100, 200, func);
+      callBackFunc(100, 200, (n1, n2) => {
+        return n1 * n2;
+      });
+
+      //Callback 함수로 map와 유사하게 만들어보기
+      function callBackFunc2(arr, logic) {
+        let a = [];
+        for (i = 0; i < arr.length; i++) {
+          a.push(logic(arr[i])); //외부로 부터 받은 함수 Call하는 위치
+        }
+        return a;
+      }
+      arr = [
+        { id: "1111", name: "티모", age: 555, addr: "대구" },
+        { id: "2222", name: "아무무", age: 666, addr: "울산" },
+        { id: "3333", name: "렝가", age: 777, addr: "인천" },
+        { id: "4444", name: "베이가", age: 888, addr: "창원" },
+      ];
+      const test = callBackFunc2(arr, (item) => {
+        return { id: item.id, name: item.name };
+      });
+      console.log(test);
+      const test2 = callBackFunc2(arr, (item) => {
+        return { id: item.age, name: item.addr };
+      });
+      console.log(test2);
+
+      //클로저 + 콜백
+      function callBackFunc3(arr) {
+        let a = [];
+
+        function map(logic) {
+          for (i = 0; i < arr.length; i++) {
+            a.push(logic(arr[i])); //외부로 부터 받은 함수 Call하는 위치
+          }
+          return a;
+        }
+        return { map: map };
+      }
+      const test3 = callBackFunc3(arr).map((item) => {
+        return { id: item.id, name: item.name };
+      });
+
+      console.log("test3", test3);
+
+      //Sort만들어 보기
+      function callBakFunc4(arr, logic) {
+        let tmp = 0;
+        //버블정렬(오름차순)
+        for (i = 0; i < arr.length - 1; i++) {
+          for (j = i + 1; j < arr.length; j++) {
+            if (logic(arr[j], arr[i]) <= 0) {
+              tmp = arr[i];
+              arr[i] = arr[j];
+              arr[j] = tmp;
+            }
+          }
+        }
+      }
+      let arr2 = [5, 2, 1, 4, 3];
+      callBakFunc4(arr2, (a, b) => {
+        return a - b;
+      });
+      console.log(arr2);
+
+      function callBakFunc5(arr) {
+        let tmp = 0;
+        //버블정렬(오름차순)
+        function sort(logic) {
+          for (i = 0; i < arr.length - 1; i++) {
+            for (j = i + 1; j < arr.length; j++) {
+              if (logic(arr[j], arr[i]) <= 0) {
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+              }
+            }
+          }
+        }
+        return {sort : sort}
+      }
+      arr3 = [5,11,2,4,7,75,2]
+      callBakFunc5(arr3).sort((a,b)=>{return a-b})
+      console.log(arr3)
+      callBakFunc5(arr3).sort((a,b)=>{return b-a})
+      console.log(arr3)
+      //Filter만들어 보기
+
+       
+        //문제 
+        function callbackfunc(func1,func2,func3,...args){
+            const arr1=func1(args); //가변인자를 받아서 그배열요소중 숫자만 필터링된 배열 반환
+            console.log("숫자필터링된 배열 : " + arr1);
+            const arr2=func2(arr1); //숫자만 필터링된 배열중 짝수만 걸러서 배열로 반환
+            console.log("짝수만 필터링된 배열 : " + arr2);
+            const arr3=func3(arr2); //짝수로 걸리진 배열의 합을 구함
+            return arr3;
+        }
+        function proc1(arr){ return arr.filter( (item) =>typeof item == 'number' )}  // 가변인자배열중 숫자만 필터링된 배열 반환
+        function proc2(arr){ return arr.filter( (item)=>item%2==0 )   }  // 숫자중에 짝수만 필터링된 배열 반환
+        function proc3(arr){ return arr.reduce( (sum,item)=>sum+item ,0) }  // 짝수의 합을 반환
+
+        const rVal = callbackfunc(proc1,proc2,proc3, 10,20,'true',11,152,999,24,'문자열',null,155,24);
+        console.log('rVal : ',rVal);
+
+
+
+    </script>
+
+
+</body>
+</html>

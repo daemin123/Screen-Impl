@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        #d1,#d2,#d3{
+            width:150px; height:150px; border:1px solid;
+        }
+        #d4{
+            width:350px; height:350px; border:1px solid;
+        }
+        img{
+            display:block;
+        }
+    </style>
+<body>
+    
+    <div id="d1"></div>
+    <hr>
+    <a href="javascript:void(0)" id="d2">TEST</a>
+    <hr>
+    <button onclick="Count()">TEST</button>
+    <hr>
+    <form name="frm" action="test.jsp" onsubmit="return false">
+        <input type="text" name="userid" /> 
+        <input type="text" name="password" />
+        <input class="submit-button" type="submit" value="버튼1" />
+        <button class="submit-button" >버튼2</button>
+        <a href="javascript:void(0)" class="submit-button" >버튼3</a>
+    </form>
+    <hr>
+    <div id="d3"></div>
+    <hr>
+    <div class="image-block">
+        <img id="image" src="" style="width:100px;height:100px;" />
+    </div>
+    <div id="d4"></div>
+    <script>
+        // 클릭이벤트
+        const d1Tg =  document.getElementById("d1");
+        let cnt=0;
+        d1Tg.addEventListener('click',(e)=>{
+            console.log("clicked..",e)
+            console.log("clicked..",e.target)
+            d1Tg.innerHTML=`<h3>CLICKED...${++cnt}</h3>`;
+        })
+        
+        const d2Tg =  document.getElementById("d2");
+        d2Tg.addEventListener('click',()=>{
+            console.log("clicked a tag...")
+        })
+        //클로저함수
+        function ClickHandler(){
+            let cnt=0;
+            function count(){
+                cnt++;
+                console.log("clicked...",cnt);
+            }
+            return count
+        }
+        const Count = ClickHandler();
+
+        //폼버튼 클릭 이벤트
+        const btns = document.querySelectorAll(".submit-button")
+        console.log(btns)
+        btns.forEach((el)=>{
+            el.addEventListener('click',(e)=>{
+                console.log('clicked..',e.target)
+                
+                if(!isValid(document.frm)){
+                    //유효성 체크 오류발생 문제발생
+                    return ;
+                }
+                document.frm.submit();
+            })
+
+        })
+
+        function isValid(form){
+            //console.log("isValid",typeof form.userid.value)
+            if(form.userid.value.trim()===""){
+                alert("ValidationCheck error..Userid를 입력하세요.")
+                return false;
+            }
+            if(form.password.value.trim()===""){
+                alert("ValidationCheck error..Password를 입력하세요.")
+                return false;
+            }  
+            return true;
+        }
+        // MouseOver /MouseLeave
+        const d3tg=document.querySelector('#d3')
+        d3tg.addEventListener('click',()=>{
+            d3tg.innerHTML="<h3>CLICKED</h3>"
+        })
+        d3tg.addEventListener('mouseover',()=>{
+            d3tg.innerHTML="<h3>MOUSEOVER</h3>"
+        })
+        d3tg.addEventListener('mouseleave',()=>{
+            d3tg.innerHTML="<h3>MOUSELEAVE</h3>"
+        })
+
+        // drag , dragover dragstart dragend drop
+        const image =document.querySelector('.image-block');
+        const d4tg = document.querySelector('#d4');
+        // image.addEventListener('dragstart',(e)=>{
+        //     console.log("dragstart",e)
+        // })
+
+        // image.addEventListener('dragend',(e)=>{
+        //     console.log("dragend",e)
+        // })
+
+
+        d4tg.addEventListener('dragover',(e)=>{
+            console.log("dragover",e)
+            e.preventDefault();    
+        })
+        d4tg.addEventListener('drop',(e)=>{
+            console.log("drop",e)
+            console.log("drop",e.dataTransfer)
+            console.log("drop",e.dataTransfer.files)
+            console.log("drop",e.dataTransfer.files[0])
+            const file = e.dataTransfer.files[0];
+
+            if(file.type.startsWith("image/")){
+                console.log("IMAGE파일..")
+                
+                const imgTg=document.createElement('img')
+                imgTg.src=URL.createObjectURL(file)
+                imgTg.setAttribute("style","width:200px;height:200px")
+                d4tg.appendChild(imgTg)
+
+            }
+            e.preventDefault();
+
+        })
+        
+
+    </script>
+    
+</body>
+</html>

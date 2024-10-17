@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<button onClick="poppi.sound()">짖어!</button><br />
+<button onClick="poppi.toString()">확인</button><br />
+<script>
+
+    //----------------------------------------
+    //01 예시
+    //----------------------------------------
+    const poppi = {
+        //속성  
+        name: "뽀삐",
+        kind: "포메라니안",
+        age: 1,
+        //기능
+        sound: function () {
+            alert(this.name + " 이(가) 짖습니다!");
+        },
+        toString: function () {
+            alert("이름 : " + this.name + "\n나이 : " + this.age + "\n견종 : " + this.kind);
+        }
+    }
+    poppi.name='쫑이';
+    
+    poppi.sound();
+    poppi.toString();
+    
+    //----------------------------------------
+    //02 예시
+    //----------------------------------------
+    const mycar = {
+    // 속성
+    owner: "소유자",
+    category: "차종",
+    fuelkind: "가솔린",
+    speed: 0, // 초기 속도는 0으로 설정
+
+    // 기능
+    accel: function () {
+        this.speed += 10; // 엑셀을 밟으면 속도를 10씩 증가시킵니다.
+        alert("속도가 증가했습니다. 현재 속도: " + this.speed);
+    },
+
+    showInfo: function () {
+        alert(
+            "Object명 : mycar\n" +
+            "소유자 : " + this.owner + "\n" +
+            "차종 : " + this.category + "\n" +
+            "연료 종류 : " + this.fuelkind + "\n" +
+            "현재 속도 : " + this.speed
+            );
+        }
+    };
+
+    // mycar 객체 속성 값 변경
+    mycar.owner = "홍길동";
+    mycar.category = "세단";
+    mycar.fuelkind = "디젤";
+
+
+
+    //----------------------------------------
+    // 03
+    //----------------------------------------
+
+    // 다음 Object를 만들어서 화면에 출력합니다
+    // object명 : myCar
+    // 속성:값
+    // owner:"소유자",category="차종",fuelkind="가솔린/디젤/LPG",speed="현재속도"
+    // 기능
+    // accel : 엑셀을 밟습니다가 출력(alert)
+    // showInfo:속성정보 모두 출력(alert)
+    const mycar = {
+            owner : "",
+            category : "",
+            fuelkind : "",
+            speed : "",
+            accel:function(){},
+            showInfo : function(){}
+    }
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height:1000px;
+        }
+        .parent{
+            width:500px;height:500px;
+            position:relative;
+            top:50px;
+            left:50px;
+            background-color:royalblue;
+        }
+        div{
+            width:50px;height:50px;border:1px solid gray;background-color: orange;
+        }
+
+        .son:nth-child(1){
+            position:fixed;
+            top:50%;
+            left:50%;
+            right:0px;
+            bottom:0px;
+        }
+        .son:nth-child(2){
+            position:relative;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+        }
+        .son:nth-child(3){
+            position:relative;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+        }
+        .son:nth-child(4){
+            position:relative;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="parent">
+        <div  class="son">1</div>
+        <div  class="son">2</div>
+        <div  class="son">3</div>
+        <div  class="son">4</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            color : white;
+            font-size : 1.0rem;
+            text-align:center;     
+            border-radius: 25px; 
+        }
+        body {
+            margin-top : 100px;
+            margin: 0px;
+        }
+        video{
+            width:300px;
+            height:300px;
+        }
+
+        .bgvideo{
+            position:absolute;
+            left:0px;
+            top:90px;
+            /* opacity: 0.8; */
+            width : 100vw;
+            height : 100vh;
+
+        }
+        ul{
+            list-style:none;
+            padding : 0px;
+        }
+        a{
+            text-decoration: none;
+            color : black;
+        }
+
+        .wrapper>header>.top--header{
+
+        }
+        .wrapper>header>nav{}
+        .wrapper>header>nav>ul{
+            display:flex;
+            justify-content: space-evenly;
+            align-items: center;
+            position : absolute;
+            top : 0px;
+            width : 100vw;
+            z-index:5;
+            background-color : lightgray;
+            /* opacity: 0.8; */
+            color : white;
+        }
+        .wrapper>header>nav>ul>li{
+            text-align:center;
+            line-height :50px;
+            width : 120px;
+            height : 50px;
+            position : relative;
+            /* border : 1px solid white; */
+        }
+        .wrapper>header>nav>ul>li>a{
+            display : block;
+            color : gray;
+            text-align:center;
+        }
+        .wrapper>header>nav>ul>li>ul{
+            display : none;
+            /* border : 1px solid gray; */
+            background-color : white;
+        }
+        .wrapper>header>nav>ul>li>ul{
+            position : absolute;
+            top : 0px;
+            left : 0px;
+            top : 50px;
+            width : 150px;
+        }
+        .wrapper>header>nav>ul>li>ul>li{
+           
+        }
+        .wrapper>header>nav>ul>li>ul>li>a{
+            display : block;
+            color : gray;
+          
+
+        }
+
+        .menu1>li:hover .menu2{
+            display : block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+            <div class="top--header"></div>
+            <nav>
+                <ul class="menu1">
+                    <li>
+                        <a href="javascript:void(0)">MENU1</a>
+                        <ul  class="menu2">
+                            <li><a href="">SubMenu1</a></li>
+                            <li><a href="">SubMenu1</a></li>
+                            <li><a href="">SubMenu1</a></li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="javascript:void(0)">MENU2</a>
+                        <ul  class="menu2">
+                            <li><a href="">SubMenu1</a></li>
+                            <li><a href="">SubMenu1</a></li>
+                            <li><a href="">SubMenu1</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">MENU3</a>
+                        <ul  class="menu2">
+                            <li><a href="">SubMenu1</a></li>
+                            <li><a href="">SubMenu1</a></li>
+                            <li><a href="">SubMenu1</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">MENU4</a>
+                        <ul  class="menu2">
+                            <li><a href="">SubMenu1</a></li>
+                            <li><a href="">SubMenu1</a></li>
+                            <li><a href="">SubMenu1</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+
+    <iframe class="bgvideo"  src="https://www.youtube.com/embed/nz5qsvRgK24?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+</body>
+</html>

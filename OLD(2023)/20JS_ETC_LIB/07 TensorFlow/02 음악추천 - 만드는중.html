@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Music Recommendation</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.8.0/dist/tf.min.js"></script>
+  </head>
+  <body>
+    <h1>Music Recommendation</h1>
+    <label for="searchInput">Search Keywords (comma-separated):</label>
+    <input type="text" id="searchInput">
+    <button onclick="addKeyword()">Add Keyword</button>
+    <button onclick="recommendMusic()">Recommend</button>
+
+    <div id="keywordList"></div>
+    <div id="recommendationResult"></div>
+
+    <script>
+      // 가상의 음악 데이터 준비
+      const musicData = [
+        { music_name: '댄스 몽키', music_group: '팝' },
+        { music_name: 'Sugar', music_group: '팝' },
+        { music_name: 'c', music_group: '팝' },
+        { music_name: '보헤미안 랩소디', music_group: '락' },
+        { music_name: 'Stairway to Heaven', music_group: '락' },
+        { music_name: 'Hotel California', music_group: '락' },
+        { music_name: '나에게로 떠나는 여행', music_group: '팝' },
+        { music_name: '너를 위한 빈자리', music_group: '팝' },
+        { music_name: 'Fly Me to the Moon', music_group: '재즈' },
+        { music_name: 'All of Me', music_group: '재즈' },
+        { music_name: 'Take Five', music_group: '재즈' },
+        { music_name: 'Lose Yourself', music_group: '힙합' },
+        { music_name: 'Empire State of Mind', music_group: '힙합' },
+        { music_name: 'Love The Way You Lie', music_group: '힙합' },
+      ];
+
+      const keywords = [];
+
+      // 키워드 추가 함수
+      function addKeyword() {
+        const keywordInput = document.getElementById('searchInput').value.trim();
+        if (keywordInput !== '') {
+          keywords.push(keywordInput);
+          document.getElementById('searchInput').value = '';
+          renderKeywordList();
+        }
+      }
+
+      // 키워드 목록 렌더링 함수
+      function renderKeywordList() {
+        const keywordList = document.getElementById('keywordList');
+        keywordList.innerHTML = '';
+        keywords.forEach(keyword => {
+          const keywordElement = document.createElement('span');
+          keywordElement.textContent = keyword;
+          keywordElement.className = 'keyword';
+          keywordList.appendChild(keywordElement);
+        });
+      }
+
+      // 음악 추천 함수
+      function recommendMusic() {
+        // 키워드가 없는 경우
+        if (keywords.length === 0) {
+          document.getElementById('recommendationResult').textContent = 'Please add keywords.';
+          return;
+        }
+
+        // 장르별 가중치를 기록할 객체
+        const genreWeights = {};
+
+        // 각 키워드의 등장 횟수를 카운트하여 가중치에 반영
+        keywords.forEach(keyword => {
+          musicData.forEach(music => {
+            if (music.music_name.toLowerCase().includes(keyword.toLowerCase())) {
+              const genre = music.music_group;
+              if (genreWeights[genre]) {
+                genreWeights[genre] += 1;
+              } else {
+                genreWeights[genre] = 1;
+              }
+            }
+          });
+        });
+
+        // 동일한 music_group을 가진 키워드의 등장 횟수로 가중치 증가
+        keywords.forEach(keyword => {
+          musicData.forEach(music => {
+            if (music.music_group && music.music_group.toLowerCase() === keyword.toLowerCase()) {
+              const genre = music.music_group;
+              if (genreWeights[genre]) {
+                genreWeights[genre] += 1;
+              }
+            }
+          });
+        });
+
+        let maxWeight = 0;
+        let recommendedGenre = '';
+
+        // 가중치가 가장 큰 장르를 찾음
+        for (const genre in genreWeights) {
+          if (genreWeights[genre] > maxWeight) {
+            maxWeight = genreWeights[genre];
+            recommendedGenre = genre;
+          }
+        }
+
+        // 추천된 장르에 속하는 음악 중 하나를 랜덤하게 선택
+        const recommendedTracks = musicData.filter(music => music.music_group === recommendedGenre);
+        const randomIndex = Math.floor(Math.random() * recommendedTracks.length);
+        const recommendedTrack = recommendedTracks[randomIndex];
+
+        if (recommendedTrack) {
+          document.getElementById('recommendationResult').textContent = `Recommended Music: ${recommendedTrack.music_name}`;
+        } else {
+          document.getElementById('recommendationResult').textContent = 'No recommendation found.';
+        }
+      }
+    </script>
+    <style>
+      .keyword {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 3px 6px;
+        background-color: lightgray;
+        border-radius: 4px;
+      }
+    </style>
+  </body>
+</html>

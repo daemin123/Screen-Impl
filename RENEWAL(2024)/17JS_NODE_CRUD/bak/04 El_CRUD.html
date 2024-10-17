@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addEl()">노드추가</button>
+    <hr/>
+    <div id="container">
+    </div>
+    
+    <script>
+        let cnt=0;
+        const addEl = ()=>{
+            const ConEl = document.getElementById('container');
+
+            const DivEl = document.createElement('div');
+            DivEl.innerHTML=`<h3>NEW EL! - ${++cnt}</h3>`;
+            DivEl.setAttribute('style','background-color:orange');
+
+            // ConEl.append(DivEl);
+            ConEl.prepend(DivEl); 
+        };
+
+    </script>
+
+</body>
+</html>

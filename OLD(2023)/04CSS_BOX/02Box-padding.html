@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{margin:0px;}
+
+        div{background-color: orange;}
+        .d1{
+            width:300px;
+            height:300px;
+            /* top,right,bottom,left:10px */
+            /* padding : 10px; */
+
+            /* top,bottom : 10px left,right : 20px */
+            /* padding : 10px 20px; */
+
+            /* top:10px right:20px bottom:30px left:20px */
+            /* padding : 10px 20px 30px; */
+            
+            /* top:10px right:20px bottom:30px left:40px; */
+            /* padding:10px 20px 30px 40px; */
+
+            padding-top:10px;
+            padding-right:20px;
+            padding-bottom:30px;
+            padding-left:40px;
+
+        }
+
+        .parent{
+            width : 400px;
+            height : 400px;
+        }
+        .son{
+            width : 150px;
+            height :150px;
+            background-color : royalblue;   
+            padding:30px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- <div class="d1">HELLOWORLD</div> -->
+
+    <div class="parent">
+        <div class="son">TEST</div>
+    </div>
+</body>
+</html>

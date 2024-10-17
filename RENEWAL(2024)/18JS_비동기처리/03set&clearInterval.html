@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="start()">START</button><button onclick="stop()">STOP</button>
+    <div class="box">
+
+    </div>
+    <script>
+       const boxEl = document.querySelector('.box');
+
+       let currentProcess=null;
+       
+       function start(){
+        currentProcess = setInterval(()=>{
+            boxEl.innerHTML+="Batch Process...<br/>"
+        },1000);
+       }
+       function stop(){
+        clearInterval(currentProcess);
+        boxEl.innerHTML+="Stop Process...<br/>"
+
+       }
+    </script>
+</body>
+</html>

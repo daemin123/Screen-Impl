@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TensorFlow.js Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.8.0/dist/tf.min.js"></script>
+  </head>
+  <body>
+    <h1>TensorFlow.js Example</h1>
+    <script>
+      // TensorFlow.js 코드를 작성하는 공간입니다.
+      // 간단한 모델을 만들고 실행하는 예제입니다.
+
+      // 모델 정의
+      const model = tf.sequential();
+      model.add(tf.layers.dense({ units: 1, inputShape: [2] }));
+      // tf.sequential()은 순차 모델을 생성하는 함수입니다.
+      // tf.layers.dense()는 밀집 레이어(Dense layer)를 추가하는 함수입니다.
+      // 이 예제에서는 입력 크기가 2이고, 출력 크기가 1인 밀집 레이어를 추가합니다.
+
+      // 모델 컴파일
+      model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' });
+      // model.compile()은 모델을 컴파일하는 함수입니다.
+      // 여기에서는 옵티마이저(optimizer)로 'sgd'를 사용하고, 손실 함수(loss)로 'meanSquaredError'를 사용합니다.
+
+        // 텐서플로우 옵티마이저 종류
+        // tf.train.sgd(learningRate): 확률적 경사 하강법(SGD, Stochastic Gradient Descent) 옵티마이저입니다. 주어진 학습률(learning rate)에 따라 가중치를 업데이트합니다.
+        // tf.train.adam(learningRate, beta1, beta2, epsilon): Adam 옵티마이저는 학습률(learning rate)과 모멘트 항(momentum terms)을 조절할 수 있는 하이퍼파라미터인 beta1, beta2, epsilon을 가지고 있습니다. Adam은 보편적으로 사용되는 옵티마이저 중 하나입니다.
+        // tf.train.adagrad(learningRate): Adagrad 옵티마이저는 각각의 매개변수마다 학습률을 조절합니다. 처음에는 큰 학습률로 시작하고, 학습이 진행됨에 따라 각 매개변수의 업데이트 속도를 줄입니다.
+        // tf.train.rmsprop(learningRate, decay, momentum, epsilon): RMSProp 옵티마이저는 Adagrad의 단점을 보완하기 위해 개발된 옵티마이저입니다. 각 매개변수의 학습률을 조절하면서도 학습 속도를 유지합니다.
+        // tf.train.momentum(learningRate, momentum): Momentum 옵티마이저는 학습 속도를 유지하면서 이전 그래디언트의 방향성을 고려하여 업데이트합니다. 그래디언트의 방향성에 따라 관성을 가지고 가중치를 업데이트하는 방식입니다.
+
+
+      // 학습 데이터 준비(여기서 종류를 선택)
+        //   const xs = tf.tensor2d([[1, 2], [2, 3], [3, 4], [4, 5]], [4, 2]);
+        //   const ys = tf.tensor2d([[3], [5], [7], [9]], [4, 1]);
+
+
+
+      // tf.tensor2d()는 2D 텐서를 생성하는 함수입니다.
+      // xs는 입력 데이터, ys는 대상 데이터(레이블)입니다.
+      // 입력 데이터는 4개의 샘플이 있고, 각 샘플은 2개의 특성을 가지고 있습니다.
+      // 대상 데이터는 입력 데이터에 대응하는 출력(레이블)입니다.
+
+      // 모델 학습
+      model.fit(xs, ys, { epochs: 10 }).then(() => {
+        // 테스트 데이터 예측
+        const input = tf.tensor2d([[5, 6], [6, 7]]);
+        const output = model.predict(input);
+        // model.fit()은 모델을 학습하는 함수입니다.
+        // xs와 ys를 사용하여 10번의 에포크(epoch) 동안 모델을 학습합니다.
+
+        // 테스트 데이터인 input에 대한 예측을 수행합니다.
+        // input은 2개의 특성을 가진 2개의 샘플로 구성되어 있습니다.
+        // model.predict()는 입력 데이터에 대한 예측을 반환합니다.
+        // 이 예제에서는 output에 예측 결과를 저장합니다.
+
+        output.print();
+        // 예측 결과를 콘솔에 출력합니다.
+      });
+    </script>
+  </body>
+</html>

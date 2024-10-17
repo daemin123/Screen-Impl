@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 한글자 타이핑 라이브러리 -->
+    <!-- 의존 라이브러리와 별개로 로드 -->
+    <script src="https://unpkg.com/hangul-js"></script>
+    <script src="https://unpkg.com/type-hangul@latest/dist/type-hangul.min.js"></script>
+    <!-- 의존 라이브러리 번들한 파일 로드 -->
+    <script src="https://unpkg.com/type-hangul"></script>
+
+    <style>
+        * {
+            font-weight: 400;
+            /* font-family: outfit; */
+            color: white;
+        }
+
+        body {
+            margin: 0px;
+
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        header {
+            height: 90px;
+            /* line-height:90px; */
+            /* border:1px solid gray; */
+            border-bottom: 1px solid lightgray;
+            display: flex;
+            justify-content: space-evenly;
+            position: relative;
+            padding: 0 120px;
+        }
+
+        header>.header--logo {
+            width: 90px;
+            /* height:55px; */
+            display: flex;
+            align-items: center;
+        }
+
+        header>.header--logo>img {}
+
+        /* 헤더 GNB */
+        header>.gnb {
+            /* border:1px solid red; */
+            width: 1200px;
+        }
+
+        header>.gnb>.one--depth {
+            width: 100%;
+            display: flex;
+            justify-content: right;
+            margin: 0px;
+        }
+
+        header>.gnb>.one--depth>li {
+            width: 150px;
+            height: 90px;
+            /* border:1px solid gray; */
+            text-align: center;
+
+            position: relative;
+
+        }
+
+        header>.gnb>.one--depth>li>a {
+            display: block;
+            line-height: 90px;
+            font-size: 1.2rem;
+        }
+
+        header>.gnb>.one--depth>li>.two--depth {
+            /* border:1px solid gray; */
+            position: absolute;
+            top: 90px;
+            left: 0px;
+            width: 100%;
+            display: none;
+            background-color: rgb(58, 93, 195);
+            border-radius: 5px;
+            z-index: 10;
+
+        }
+
+        header>.gnb>.one--depth>li>.two--depth>li {
+            height: 50px;
+
+        }
+
+        header>.gnb>.one--depth>li>.two--depth>li>a {
+            font-weight: 400;
+            color: white;
+        }
+
+        header>.gnb>.one--depth>li>a:hover {
+            color: rgb(58, 93, 195);
+        }
+
+        header>.gnb>.one--depth>li:hover .two--depth {
+            display: block;
+            animation-name: movingMenu;
+            animation-duration: 0.4s;
+            animation-timing-function: linear;
+        }
+
+        header>.gnb>.one--depth>li>.two--depth::before {
+            content: '';
+            background-image: url('./image/share.svg');
+
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 25px;
+            height: 25px;
+            /* border : 1px solid gray; */
+            display: block;
+            position: relative;
+            top: -28px;
+            left: 0px;
+            margin: 0 auto;
+        }
+        @keyframes movingMenu {
+            from {
+                margin-top: 20%;
+                opacity: 0.5;
+            }
+            to {
+                margin-top: 0%;
+                opacity: 1;
+            }
+        }
+
+
+        /* 헤더 GNB-LINK */
+        header>.gnb--link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        header>.gnb--link>a {
+            /* line-height:90px; */
+            height: 30px;
+            width: 50px;
+            display: block;
+            text-align: center;
+            line-height: 30px;
+            /* border:1px solid gray; */
+            position: relative;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border: 1px solid lightgray;
+        }
+
+        header>.gnb--link>a:nth-child(2) {
+            background-color: black;
+            color: white;
+            margin-right: 10px;
+        }
+
+        header>.gnb--link>* {
+            margin-right: 10px;
+        }
+
+        header>.gnb--link>button {
+
+            background-color: white;
+            font-size: 0.5rem;
+            border: 0;
+            outline: 0;
+        }
+
+        header>.gnb--link>button>img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+    
+    <!-- Section main--banner -->
+    <style>
+        .main-banner {
+            position: relative;
+            height: 600px;
+        }
+
+        .main-banner .img {
+            animation: rotate_image 2s linear infinite;
+            transform-origin: 30% 50%;
+
+            width: 50px;
+            height: 80px;
+            position: absolute;
+            top: 120px;
+            left: 150px;
+            z-index: -2;
+        }
+
+        .main-banner .img2 {
+            animation: rotate_image 3s linear infinite;
+            transform-origin: 50% 50%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            z-index: -2;
+
+        }
+
+        .main-banner .img3 {
+            animation: rotate_image 5s linear infinite;
+            transform-origin: 50% 50%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 300px;
+            left: 80%;
+            z-index: -2;
+
+        }
+
+        @keyframes rotate_image {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .banner{
+            height:500px;
+            font-size:4rem;
+            background-color:orange;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="header--logo">
+            <img src="http://www.mjvisiontech.com/theme/mj/img/common/logo.svg" alt="">
+
+        </div>
+        <nav class="gnb">
+            <ul class="one--depth">
+                <li>
+                    <a href="">About</a>
+                    <ul class="two--depth">
+                        <li><a href="">SubMenu1</a></li>
+                        <li><a href="">SubMenu2</a></li>
+                        <li><a href="">SubMenu3</a></li>
+                        <li><a href="">SubMenu4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">Technology</a>
+                    <ul class="two--depth">
+                        <li><a href="">SubMenu1</a></li>
+                        <li><a href="">SubMenu2</a></li>
+                        <li><a href="">SubMenu3</a></li>
+                        <li><a href="">SubMenu4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">Product</a>
+                    <ul class="two--depth">
+                        <li><a href="">SubMenu1</a></li>
+                        <li><a href="">SubMenu2</a></li>
+                        <li><a href="">SubMenu3</a></li>
+                        <li><a href="">SubMenu4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">Support</a>
+                    <ul class="two--depth">
+                        <li><a href="">SubMenu1</a></li>
+                        <li><a href="">SubMenu2</a></li>
+                        <li><a href="">SubMenu3</a></li>
+                        <li><a href="">SubMenu4</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="gnb--link">
+            <a href="">KOR</a>
+            <a href="">ENG</a>
+            <button><img src="./image/sitemenu.svg"></button>
+        </div>
+    </header>
+    <section class="main-banner">
+
+        <img class="img" src="./image/stick.svg" alt="" />
+        <img class="img2" src="./image/stick.svg" alt="" />
+        <img class="img3" src="./image/stick.svg" alt="" />
+    </section>
+
+
+
+</body>
+
+
+</html>

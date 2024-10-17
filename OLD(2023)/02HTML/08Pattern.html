@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="test.jsp">    
+        <!-- TEL : <input   pattern="[0]{1}[0-9]{2}-[0-9]{3,4}-[0-9]{4}" title="0xx-xxxx-xxxx 에 맞게 입력하세요." placeholder="0xx-xxxx-xxxx" required /><br> -->
+        <!-- 
+            ?= : 전방탐색
+            .* : 1개 이상의 임의의 문자
+            [a-z] : a-z까지의 문자
+            .{8,16} : 문자열의 길이 범위
+         -->
+        <!-- 
+        PASSWORD : <input pattern="(?=.*[a-z]).{8,16}" required /><br/>
+        PASSWORD : <input pattern="(?=.*[a-z])(?=.*[A-Z]).{8,16}" required /><br/>
+        PASSWORD : <input pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" required /><br/>
+        PASSWORD : <input pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!?#]).{8,16}" required /><br/> 
+        -->
+        <input type="text" required oninvalid="this.setCustomValidity('입력좀해 제발..ㅠㅠ');"><br>
+        <input type="text" disabled><br>
+        <input type="text"><br>
+        <input type="text"><br>
+        
+        <input type="submit" />
+    </form>
+</body>
+</html>

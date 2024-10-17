@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        div{
+            display:flex;
+        }
+        div>*{
+            width:500px;
+            height:500px;
+            margin:20px;
+            border : 1px solid gray;
+            overflow:auto;
+        }
+    </style>
+    <div class="box">
+        <div class="main_box"></div>
+        <div class="sub_01"></div>
+        <div class="sub_02"></div>
+    </div>
+
+
+    <script>
+        // 조회
+        const main_box_el = document.querySelector(".main_box");
+        const sub_01_el = document.querySelector(".sub_01");
+        const sub_02_el = document.querySelector(".sub_02");
+
+        // Main Process(setInterval:비동기함수,반복처리)
+        setInterval(()=>{
+            main_box_el.innerHTML+='MAIN PROCESS...<br/>'
+        },1000)
+
+        
+        //Sub Process(async/await 를 사용하기 전- 동시에 예약처리 완료되는 문제)
+        
+        // function Sub_process_exec(val){
+        //     return new Promise((resolve,reject)=>{
+        //         //로직처리~~(ex.비동기요청..)
+        //         setTimeout(()=>{
+        //             resolve(val);
+        //         },3000)
+        //         //성공시 전달되는 값
+        //         //throw "예외발생!!";
+        //     })
+        // }
+
+        // Sub_process_exec(1)
+        //     .then((result)=>{
+        //         console.log("성공!",result)
+        //         sub_01_el.innerHTML="예약프로세스 실행완료!-"+result;
+        //     })   //성공시 수행로직
+        //     .catch((error)=>{console.log("예외!",error)})  //실패시 수행로직
+
+        //  Sub_process_exec(2)
+        //     .then((result)=>{
+        //         console.log("성공!",result)
+        //         sub_02_el.innerHTML="예약프로세스 실행완료!-"+result;
+        //     })   //성공시 수행로직
+        //     .catch((error)=>{console.log("예외!",error)})  //실패시 수행로직    
+        
+
+
+
+
+        //Sub Process(async/await를 통한 비동기 프로세스의 우선순위 지정)
+       
+       
+        function Sub_process_exec(val){
+            return new Promise((resolve,reject)=>{
+                //로직처리~~(ex.비동기요청..)
+                setTimeout(()=>{
+                    resolve(val);
+                },3000)
+                //성공시 전달되는 값
+                //throw "예외발생!!";
+            })
+        }
+
+        // async 예약어 : 해당 함수가 비동기적인 처리를 하는 프로세스임을 암시
+        // await 예약어 : async블럭 내부에서 사용되며 비동기 작업이 완료시까지 대기하는 예약어 
+        async function sub_process_func(){
+            
+            await Sub_process_exec(1)
+                .then((result)=>{
+                    console.log("성공!",result)
+                    sub_01_el.innerHTML="예약프로세스 실행완료!-"+result;
+                })   //성공시 수행로직
+                .catch((error)=>{console.log("예외!",error)})  //실패시 수행로직
+
+            await Sub_process_exec(2)
+                .then((result)=>{
+                    console.log("성공!",result)
+                    sub_02_el.innerHTML="예약프로세스 실행완료!-"+result;
+                })   //성공시 수행로직
+                .catch((error)=>{console.log("예외!",error)})  //실패시 수행로직 
+           
+        }
+        sub_process_func();
+
+    </script>
+
+</body>
+</html>

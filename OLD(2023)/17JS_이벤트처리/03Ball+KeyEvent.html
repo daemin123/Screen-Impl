@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ball
+        {
+            width:100px;
+            height:100px;
+            border:3px solid gray;
+            border-radius: 50%;
+            position:absolute;
+            left:0px;
+            top:0px;
+            animation-name:bounce;
+            animation-duration: 3s;
+            
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        @keyframes bounce{
+            0%{left:0px;top:0px;animation-timing-function:ease-in;}
+            25%{left:0px;top:500px;animation-timing-function:ease-out;}
+            50%{left:0px;top:150px;animation-timing-function:ease-in;}
+            75%{left:0px;top:500px;animation-timing-function:ease-out;}
+            100%{left:0px;top:0px;animation-timing-function:ease-in;}
+           
+        }
+    </style>
+</head>
+<body>
+    <div id='ball'></div>
+    
+    <script>
+        ball=document.getElementById('ball');
+        xpos=0;
+        document.addEventListener('keydown',function(){
+            console.log(event.keyCode);
+            if(event.keyCode==37)//left
+            {
+                xpos-=100;
+                ball.style.transform='translate('+xpos+'px,0px)'
+                ball.style.transition='0.3s';
+            }
+            else if(event.keyCode==38) //up
+            {}
+            else if(event.keyCode==39) //right
+            {   xpos+=100;
+                ball.style.transform='translate('+xpos+'px,0px)'
+                ball.style.transition='0.3s';
+            }
+            else if(event.keyCode==40) //down
+            {}
+
+        })
+
+    </script>
+</body>
+</html>

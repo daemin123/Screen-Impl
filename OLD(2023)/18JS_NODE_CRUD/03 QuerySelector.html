@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        div{
+            margin:15px;
+        }
+        .btn{
+            width:100px;height:30px;
+            background-color: lightcyan;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn--bg0{background-color:red;}
+        .btn--bg1{background-color:orange;}
+        .btn--bg2{background-color:yellow;}
+        .btn--bg3{background-color:green;}
+        .btn--bg4{background-color:blue;}
+        .btn--xl{font-size:1.2rem;}
+        .btn--speed01{transition:0.1s;}
+        .btn--speed05{transition:0.5s;}
+    </style>
+    <div class="btn">Button</div>
+    <div class="btn">Button</div>
+    <div class="btn">Button</div>
+    <div class="btn">Button</div>
+    <div class="btn">Button</div>
+
+    <script>
+        const btnEls = document.querySelectorAll('.btn'); 
+        console.log(btnEls);
+        btnEls.forEach((btn,idx)=>{
+            btn.addEventListener('mouseover',function(){ 
+                //alert("clicked");
+                console.log(btn,idx);
+                btn.classList.add('btn--bg'+idx);
+                btn.classList.add('btn--xl');
+    
+            })
+            btn.addEventListener('mouseleave',function(){ 
+                //alert("clicked");
+                console.log(btn,idx);
+               
+                btn.classList.remove('btn--bg'+idx);
+                btn.classList.remove('btn--xl');
+  
+            })
+
+        })
+
+    </script>
+</body>
+</html>

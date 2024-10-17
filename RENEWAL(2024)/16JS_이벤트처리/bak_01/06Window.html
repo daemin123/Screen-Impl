@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #ball{
+            width :300px;
+            height : 300px;           
+            border-radius: 50%;
+            background-color:beige;
+            margin:100px auto;
+        }  
+    </style>
+    <div id="ball"></div>
+    <script>
+        // window.innerWidth : 브라우저 화면의 너비
+    // window.innerHeight : 브라우저 화면의 높이
+    // window.outerWidth : 브라우저 전체의 너비
+    // window.outerHeight : 브라우저 전체의 높이
+    // 가로 길이
+    // window.innerWidth // 브라우저 윈도우 두께를 제외한 실질적 가로 길이
+    // window.outerWidth // 브라우저 윈도우 두께를 포함한 브라우저 전체 가로 길이
+    // //세로길이
+    // window.innerHeight // 브라우저 윈도우 두께를 제외한 실질적 세로 길이
+    // window.outerHeight // 브라우저 윈도우 두께를 포함한 브라우저 전체 세로 길이
+        window.addEventListener('resize',function(){
+            console.log('outerwidth : ' + window.outerWidth);
+            console.log('innerwidth : ' + window.innerWidth);
+            ball = document.getElementById('ball');
+            if(window.outerWidth<=700){
+                ball.style.backgroundColor='blue';
+                ball.style.width='150px';ball.style.height='150px';
+                ball.style.transition='0.5s';
+            }else if(window.outerWidth<=1200){
+                ball.style.backgroundColor='orange';
+                ball.style.width='200px';ball.style.height='200px';
+                ball.style.transition='0.5s';
+            }else{
+                ball.style.backgroundColor='beige';
+                ball.style.width='300px';ball.style.height='300px';
+                ball.style.transition='0.5s';
+            }
+        })
+    </script>
+</body>
+</html>

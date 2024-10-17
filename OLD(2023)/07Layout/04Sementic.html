@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 전체 */
+        *{margin:2px;}
+        body{}
+        a{}
+        ul{}
+        .wrapper{
+            width:1800px;
+            /* height:1200px; */
+            border:1px solid gray;
+            margin:0 auto;
+        }
+
+        /* 헤더 */
+        .wrapper>header{
+            border:1px solid gray;
+            height:100px;
+
+        }
+        .wrapper>header>.top--header{
+            border:1px solid gray;  
+            height:40px;
+        }
+        .wrapper>header>nav{
+            border:1px solid gray;  
+            height:50px;
+        }
+
+
+        /* 메인 */
+        .wrapper>main{
+            border:1px solid gray;
+            /* height:600px; */
+            
+
+        }
+        .wrapper>main>section{
+            border:1px solid gray;
+        }
+        .wrapper>main>section:nth-child(1){
+            height:400px;
+            display: flex;        
+            margin:0 auto;
+
+            
+        }
+        .wrapper>main>section:nth-child(1)>aside{
+            border:1px solid gray;
+            width:300px;
+        }
+        .wrapper>main>section:nth-child(1)>article{
+            border:1px solid gray;
+            flex-grow: 1;
+        }
+
+
+        .wrapper>main>section:nth-child(2){
+            height:500px;
+            display: flex;
+
+        }
+        .wrapper>main>section:nth-child(2)>aside{
+            border:1px solid gray;
+            width:300px;
+            background-color:antiquewhite;
+        }
+        .wrapper>main>section:nth-child(2)>article{
+            border:1px solid gray;
+            flex-grow: 1;
+            background-color: beige;
+        }
+
+        .wrapper>main>section:nth-child(3){
+            height:400px;
+            display:flex;
+            flex-direction: column;
+        }
+        .wrapper>main>section:nth-child(3)>article{
+            height:50px;
+            border:1px solid gray;
+        }
+        .wrapper>main>section:nth-child(3)>div{
+            display:flex;
+            border:1px solid gray;
+            align-items: center;
+            height:280px;
+        }
+        .wrapper>main>section:nth-child(3)>div>aside{
+            width:300px;
+            border:1px solid gray;
+            align-self: stretch;
+            
+        }
+
+        .wrapper>main>section:nth-child(3)>div>article{
+            flex-grow: 1;
+            border:1px solid gray;
+            height:280px;      
+        }
+
+
+
+        /* 푸터 */
+        .wrapper>footer{
+            border:1px solid gray;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- 헤더 -->
+        <header>
+            <div class="top--header"></div>
+            <nav></nav>
+        </header>
+        <!-- 메인 -->
+        <main>
+            <section>
+                <aside></aside>
+                <article></article>
+            </section>
+            <section>
+                <aside></aside>
+                <article></article>
+                <aside></aside>
+            </section>
+
+            <section>
+                <article></article>
+                <div>
+                    <aside></aside>
+                    <article></article>
+                    <aside></aside>
+                </div>
+                <article></article>
+            </section>
+        </main>
+        <!-- 푸터 -->
+        <footer></footer>
+    </div>
+</body>
+</html>
+
+    <!-- 
+        시멘틱 태그 : 웹문서를 의미 있는 블록으로 나누어 구조를 만드는데 사용되는 태그
+        종류 : 
+        <header>    : 헤더 섹션
+        <nav>       : 네이게이션 링크 섹션
+        <section>   : main안의 특정 부분 지정
+        <article>   : 문서본문 섹션
+        <aside>     : 문서의 사이드바 영역
+        <footer>    : 푸터 영역
+        <main>      : 문서 주요 컨텐츠 영역     
+     -->

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./중구맛집.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <style>
+        .meme_item{
+            position: relative;
+    
+        }
+        #wrapper{
+            display:flex;
+            flex-wrap: wrap;
+           
+        }
+        #wrapper>*{
+            margin:50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>대구 지역별 맛집 분포도</h1>
+    
+    <div id="wrapper">
+        <div>
+            <div style="text-align:center;width:500px;">
+                <h4>중구</h4>
+            </div>  
+            <div class="meme_item" style="text-align:center;border : 1px solid gray;width:500px;height:500px;">   
+                <canvas id="myChart"></canvas>        
+            </div>
+        </div>  
+    </div>
+ 
+    
+
+
+    <!-- 01 API 받아서 원하는 데이터 추출하기 -->
+    <script>
+       //data만 가져오기
+        const arr = 중구맛집.data;
+        console.log(arr);
+
+        // 전체 정보 가져오기
+        const total = arr.length;
+
+        //FD_CS(음식카테고리) 만 가져오기
+        const cat_arr = arr.map((item)=>item.FD_CS)
+        .sort((a, b) => a.localeCompare(b));
+        console.log(cat_arr);
+
+        // FD_CS(음식카테고리) 별로 카테고리 누적
+        const cat_obj = arr.reduce((acc, item) => {
+        const { FD_CS } = item;
+        if (acc.hasOwnProperty(FD_CS)) {
+            acc[FD_CS] += 1; // 이미 해당 FD_CS가 존재하면 카운트를 1 증가
+        } else {
+            acc[FD_CS] = 1; // 해당 FD_CS가 처음 나타나면 카운트를 1로 초기화
+        }
+        return acc;
+        }, {});
+
+        //추출
+        console.log(cat_obj);   
+        const cat_group =  Object.keys(cat_obj);
+        const cat_value = Object.values(cat_obj);
+        console.log(cat_group);
+        console.log(cat_value);
+        
+    </script>
+
+
+
+<!-- 그래프로 표현하기 -->
+<script>
+    const drawbyPie = (title,cat_group,cat_value,tag)=>{
+
+    // Bg 정보 담는 배열
+    const bg_color =['#FF6384','#36A2EB','#FFCE56','#4BC0C0','#9966FF','#FF9F40','#FF6384','#36A2EB']
+    const border_color =['#FF6384','#36A2EB','#FFCE56','#4BC0C0','#9966FF','#FF9F40','#FF6384','#36A2EB']
+    // 차트 데이터
+    var data = {
+            // 카테고리명
+            labels: cat_group,
+            datasets: [{
+                label: 'Example Dataset',
+                data: cat_value,
+                backgroundColor: bg_color,
+                borderColor: border_color,
+                borderWidth: 1
+            }]
+        };
+
+        // 차트 옵션
+        var options = {
+            title: {
+                display: true,
+                text: title
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // 캔버스 요소 선택
+        var ctx = document.getElementById(tag).getContext('2d');
+
+        // 막대 그래프 그리기
+        var myChart = new Chart(ctx, {
+            type: 'pie',    //line,pie,doughnut,radar(꺽은선),bubble(버블차트),scatter(산점도),heatmap(히트맵)
+            data: data,
+            options: options
+        });
+}
+    
+
+//파이그래프 실행
+drawbyPie('중구맛집',cat_group,cat_value,'myChart');
+
+</script>
+</body>
+</html>

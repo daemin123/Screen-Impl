@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .underline{
+            position:relative;
+        }
+        .underline>input{
+            width:200px;
+            height:30px;
+            border:0px;
+            outline:0;
+        }
+        .underline>span{
+            display:block;
+            width:0px;
+            height:1px;
+            /* background-color: lightgray; */
+            background:linear-gradient(to right,red,orange,yellow,green);
+            transition:0.5s;
+
+            position:absolute;
+            top:80%;
+            left:1px;
+        }
+        .underline>input:focus+span{
+            width:200px;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="underline">
+        <input type="text">
+        <span></span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .d1{}
+        .d1>input[type="checkbox"]{
+            display:none;
+        }
+        .d1>label{
+            display:block;
+            width:45px;
+            height:45px;
+            /* border:1px solid black; */
+            background-image:url("./image/toggle_on.svg");
+            background-size:100%;
+          
+        }
+        .d1>input[type="checkbox"]:checked+label{
+            background-image:url("./image/toggle_off.svg");
+        }
+
+        .d2{}
+        .d2>input[type="radio"]{
+            display:none;
+        }
+        .d2>label{
+            display:inline-block;
+            width:45px;
+            height:45px;
+            border:1px solid lightgray;
+            border-radius: 50%;      
+        }
+        #r1:checked+label{
+            background-image:url('./image/male.svg');
+            background-size:100%;         
+        }
+        #r2:checked+label{
+            background-image:url('./image/female.svg');
+            background-size:100%;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="d1">
+        <input type="checkbox" id="chk1"> <label for="chk1"></label>
+    </div>
+    <div class="d2">
+        <input type="radio" name="gender" value="male"  id="r1">   <label for="r1"></label>
+        <input type="radio" name="gender" value="female"id="r2">   <label for="r2"></label>
+    </div>
+    <div>
+        <!-- 취미 각각에 맞는 이미지를 찾아서 label의 백그라운드로 하기 -->
+        <input type="checkbox" id="climing"><label for="climing">등산</label>
+        <input type="checkbox" id="swiming"><label for="swiming">수영</label>
+        <input type="checkbox" id="reading"><label for="reading">독서</label>
+        <input type="checkbox" id="running"><label for="running">조깅</label>
+    </div>
+  
+</body>
+</html>

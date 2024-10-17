@@ -1,0 +1,12 @@
+        /* 전체 */
+        *{margin:2px;}
+        body{}
+        a{}
+        ul{}
+
+        .wrapper{
+            width:1800px;
+            /* height:1200px; */
+            border:1px solid gray;
+            margin:0 auto;
+        }

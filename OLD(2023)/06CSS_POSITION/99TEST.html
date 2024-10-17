@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        button {
+            width: 250px;
+            height: 50px;
+            line-height: 50px;
+            background-color: white;
+            box-shadow: 15px 15px 15px lightgray;
+            text-align: right;
+            color: black;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 300,
+                'GRAD' 0,
+                'opsz' 48;
+            position: relative;
+            top: 5px;
+        }
+
+        .img {
+            animation: rotate_image 2s linear infinite;
+            transform-origin: 30% 50%;
+        }
+        .img2 {
+            animation: rotate_image 3s linear infinite;
+            transform-origin: 50% 50%;
+        }
+        @keyframes rotate_image {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <button onclick="test()" class="btn">
+
+        <span class="material-symbols-outlined">expand_less</span>
+    </button>
+
+    <hr/>
+    <img class="img" src="./image/stick.svg" alt="" style="width:100px;height:100px;position:relative;top:10px;left:50px;" />
+    <img class="img2" src="./image/stick.svg" alt="" style="width:100px;height:80px;position:relative;top:150px;left:150px;" />
+</body>
+
+<script>
+    const btn = document.querySelector(".btn");
+    const icon = document.querySelector(".material-symbols-outlined");
+    let flag = true;
+    btn.addEventListener('click', function () {
+        if (flag === true) {
+            icon.style.transform = 'rotate(-180deg)';
+            icon.style.transition = '0.5s';
+            flag = false;
+        }
+        else {
+            icon.style.transform = 'rotate(0deg)';
+            icon.style.transition = '0.5s';
+            flag = true;
+        }
+
+    })
+
+</script>
+
+</html>

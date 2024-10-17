@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{width:200px;height:200px;border:1px solid ;margin:50px;overflow: auto;}
+    </style>
+</head>
+<body>
+    
+    <div class="d1"></div>
+
+    <button onclick='startTimeout()'>예약실행</button>
+    <button onclick='cancelTimeout  ()'>예약취소</button>
+    <div class="d2"></div>
+    
+    <script>
+        const d1El = document.querySelector('.d1');
+        const d2El = document.querySelector('.d2');
+        d1El.addEventListener("click",function(){
+            d1El.innerHTML+="CLICKED!!!!<br>";
+        });
+
+        //setTimeout 예약작업(일정시간 이후 특정작업 동작 - 비동기처리)
+        let batch01=null;
+        function startTimeout(){
+            batch01 = setTimeout(()=>{
+                d2El.innerHTML="SetTimeoutTest!";
+            },3000);
+        }
+        function cancelTimeout(){
+            clearTimeout(batch01);
+        }
+    </script>
+
+</body>
+</html>

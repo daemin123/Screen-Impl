@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 2px;
+            font-size: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .wrapper {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .wrapper>header {
+
+            /* height:100px; */
+            border: 1px solid gray;
+        }
+
+        .wrapper>header>.top-header {
+
+            height: 40px;
+            border: 1px solid gray;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wrapper>header>.top-header>.logo {
+            height: 30px;
+            width: 100px;
+            align-content: center;
+            border: 1px solid gray;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .wrapper>header>.top-header>ul {
+            border: 1px solid red;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+        }
+
+        .wrapper>header>.top-header>ul>li {
+            border: 1px solid gray;
+            width: 80px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* .wrapper>header>.top-header>ul>li::before {
+            content: "|";
+            position: absolute;
+            left: 100%;
+            color: blueviolet;
+        } */
+
+        .wrapper>header>.top-header>ul>li:last-child::before {
+            content: "";
+        }
+
+        .wrapper>header>.top-header>ul>li>a {
+            display: block;
+        }
+
+        .wrapper>header>nav {
+            /* height:50px; */
+            border: 1px solid gray;
+        }
+
+        .wrapper>header>nav>ul {
+            /* height:50px; */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .wrapper>header>nav>ul>li {
+
+            border: 1px solid gray;
+            width: 120px;
+            height: 30px;
+            line-height: 25px;
+            text-align: center;
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 120px;
+        }
+
+        .wrapper>header>nav>ul>li>a {
+            display: block;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header>
+            <div class="top-header">
+                <div class="logo">LOGO</div>
+                <ul>
+                    <li><a href="">나의정보</a></li>
+                    <li><a href="">고객센터</a></li>
+                    <li><a href="">로그아웃</a></li>
+                    <li><a href="">기타등등</a></li>
+                </ul>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="">MENU1</a></li>
+                    <li><a href="">MENU2</a></li>
+                    <li><a href="">MENU3</a></li>
+                    <li><a href="">MENU4</a></li>
+                    <li><a href="">MENU5</a></li>
+                    <li><a href="">MENU6</a></li>
+                </ul>
+            </nav>
+        </header>
+
+    </div>
+
+</body>
+
+</html>

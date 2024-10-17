@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="d1" style="width:100px;height:100px;border:1px solid;margin-bottom:50px;"></div>
+    <div id="d2" style="width:100px;height:100px;border:1px solid;margin-bottom:50px;"></div>
+    <div id="d3" style="width:500px;height:500px;border:1px solid"></div>
+
+    <script>
+        // click
+        const d1tg = document.getElementById('d1')
+        d1tg.addEventListener('click',function(){
+            this.innerHTML='<h3>CLICK!</h3>';
+        });
+        // mouseover,mouseleave
+        const d2tg = document.getElementById('d2')
+        d2tg.addEventListener('mouseover',function(){
+            this.innerHTML='<h3>MOUSEOVER!</h3>';
+        })
+        d2tg.addEventListener('mouseleave',function(){
+            this.innerHTML='<h3>MOUSELEAVE!</h3>';
+        })
+
+        // drag,dragstart,dragend,drop,dragover,..
+        //https://velog.io/@reasonz/2022.04.25-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%93%9C%EB%9E%98%EA%B7%B8-%EC%95%A4-%EB%93%9C%EB%A1%AD-%EC%9D%B4%EB%B2%A4%ED%8A%B8-API-%EC%A0%95%EB%A6%AC        const d3tg = document.getElementById('d3')
+        d3tg.addEventListener('dragover',function(event){
+            console.log('dragover!!');
+            //드랍 요소를 인식할 수있도록 기본 동작 취소
+            event.preventDefault();
+        })
+        d3tg.addEventListener('drop',function(event){
+            console.log('drop!!',event);
+            const files =event.dataTransfer.files;
+            for(i=0;i<files.length;i++){
+                const file=files[i];
+                console.log('file : ',file.name);
+                if(file.type.startsWith('image/')){
+                    const imgtg = document.createElement('img');
+                    imgtg.src=URL.createObjectURL(file);//<img src=파일의URL경로 />
+                    d3tg.appendChild(imgtg);
+                }
+            }
+            event.preventDefault();
+            
+        })
+
+    </script>
+
+</body>
+</html>

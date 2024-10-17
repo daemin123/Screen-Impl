@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- reset cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
+    <style>
+        body{
+            height:3000px;
+        }
+       #menu{
+            display:flex;
+            justify-content: space-evenly;
+            border:1px solid gray;
+            background-color: beige;
+            position:fixed;
+            width:100vw;
+        }
+        #menu>li{
+            width:120px;
+            
+            position:relative;
+        }
+        #menu>li>a{
+            display:block;
+            border:1px solid gray;
+            height:30px;
+        }
+        #menu>li>ul{
+            position:absolute;
+            left:0px;
+            top:30px;
+            display:none;
+        }
+        #menu>li>ul>li{}
+        #menu>li>ul>li>a{}
+        #menu>li:hover ul{
+            display:block;
+        }
+
+        .quickMenu{
+            width:80px;
+            height:400px;
+            border-radius: 20px;
+            border:1px solid gray;
+            background-color: chocolate;
+            position:fixed;
+            left:90%;
+            top:30%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quickMenu">
+
+    </div>
+
+    <ul id="menu">
+        <li>
+            <a href="">MENU1</a>
+            <ul>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">MENU2</a>
+            <ul>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">MENU3</a>
+            <ul>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+                <li><a href="">SUBMENU</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div style="height:600px;background-color:aquamarine;"></div>
+    <div style="height:600px;background-color:royalblue;"></div>
+    <div style="height:600px;background-color:rosybrown;"></div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            height:3000px;
+        }
+        .container{
+            width:150px;
+            height:150px;
+            perspective: 1000px;
+            /* border:1px solid gray; */
+            position:fixed;
+            left:0px;right:0px;top:0px;bottom:0px;
+            margin:auto;
+
+           
+        }
+        .container>.card{
+            width:150px;
+            height:150px;
+            position:relative;
+
+            transform-style:preserve-3d;
+            transition: 1s;
+            
+        }
+        .container>.card>.front,
+        .container>.card>.back
+        {
+            width:100%;
+            height:100%;
+            position:absolute;
+            left:0px;top:0px;
+
+            /* rotateY(180deg) 일때 hidden처리 */
+            backface-visibility: hidden;
+            border-radius: 50%;
+            box-shadow: 5px 5px 15px lightgray;
+        }
+
+        .container>.card>.front{
+            /* background-color:orange; */
+            background-image: url("https://img.danawa.com/prod_img/500000/609/014/img/3014609_1.jpg?shrink=330:*&_v=20220524144914");
+            /* background-size:contain; */
+          
+            background-position: center;
+            background-size: contain;
+            background-clip: content-box;
+            padding:1px;
+            background-repeat: no-repeat;
+            border: 5px solid white;     
+            opacity: 0.8;
+        }
+        .container>.card>.front:hover{
+            opacity: 1;
+        }
+        .container>.card>.back{
+            background-color:royalblue;
+            /* back은 기본적으로 hidden처리 */
+            transform:rotateY(180deg);
+
+            font-size:0.4rem;
+            color:white;
+            text-align: center;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+
+            line-height:12px;
+        }
+        .container:hover .card{
+            /* Front : 180deg , Back : 360deg */
+            transform:rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="card">
+            <div class="front"></div>
+            <div class="back">
+                아이스 아메리카노 할인 이벤트 진행중<br/> 
+                Price : 1,500<br/> 
+                행사기간<br/>
+                2023-05-03 ~ 2023-05-15<br/>
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

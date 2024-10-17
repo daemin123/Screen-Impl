@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Three.js Cube Example</title>
+    <style>
+      body { margin: 0; }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.0/build/three.min.js"></script>
+    <script>
+      // Scene 생성
+      const scene = new THREE.Scene();
+     
+      
+      // Camera 생성
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      
+      // Renderer 생성
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setClearColor(0x808080); //배경색
+      document.body.appendChild(renderer.domElement);
+      
+      // Cube 생성
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.MeshBasicMaterial({ color:'orange' });
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+      // 큐브의 경계선을 위한 라인 생성
+      const edges = new THREE.EdgesGeometry(geometry);
+      const lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 }); // 라인 색상
+      const wireframe = new THREE.LineSegments(edges, lineMaterial);
+      cube.add(wireframe);
+
+      
+      // Camera 위치 설정
+      camera.position.z = 3;
+      
+      // 애니메이션 함수
+      function animate() {
+        requestAnimationFrame(animate);
+      
+        // Cube 회전
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+      
+        renderer.render(scene, camera);
+      }
+     
+      // 애니메이션 시작
+      animate();
+    </script>
+  </body>
+</html>

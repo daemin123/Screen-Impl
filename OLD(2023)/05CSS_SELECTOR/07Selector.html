@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{}
+        body{margin :0px;}
+        ul{list-style:none;padding:0px;}
+        .wrapper{}
+        .wrapper>header{}
+        .wrapper>header>.top--header{
+            width:1280px;height:30px;background-color:beige;
+            line-height:30px;
+            margin:0 auto;
+        }
+        .wrapper>header>.top--header>ul{
+            display:flex;
+            justify-content: right;
+        }
+        .wrapper>header>.top--header>ul>li{
+            width:100px;
+            text-align: center;
+        }
+        .wrapper>header>.top--header>ul>li>a{
+            text-decoration: none;
+            color:black;
+            display:block;
+            position:relative;
+            font-size:0.8rem;
+            color:rgb(65, 64, 64);
+        }
+        .wrapper>header>.top--header>ul>li>a::after{
+            content:'|';
+            position:absolute;
+            top:0px;
+            left:100%;
+        }
+        .wrapper>header>.top--header>ul>li:last-child a::after{
+            content:'';
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+            <div class="top--header">
+                <ul>
+                    <li><a href="">MENU1</a></li>
+                    <li><a href="">MENU2</a></li>
+                    <li><a href="">MENU3</a></li>
+                    <li><a href="">MENU4</a></li>
+                </ul>
+            </div>
+            <nav></nav>
+        </header>
+
+
+    </div>
+    
+</body>
+</html>

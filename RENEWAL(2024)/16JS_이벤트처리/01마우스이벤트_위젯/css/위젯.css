@@ -1,0 +1,233 @@
+:root{}
+
+
+*{box-sizing: border-box;font-family: 'NanumBaReunHiPi';font-weight:800}
+
+ul{
+    list-style:none;
+    padding : 0;
+    margin :0;
+}
+body{
+    padding : 0;
+    margin : 0;
+    background-color: white;
+   
+}
+
+.wrapper{}
+.wrapper>header{
+    /* height : 100px; */
+    position:relative;
+    z-index:1000;
+    background-color: white;
+    padding : 20px ;
+
+}
+.wrapper>header>.top-header{
+    height : 50px;
+    display:flex;
+    justify-content: right;
+    align-items: center;
+}
+.wrapper>main{}
+.wrapper>main>section{
+    width : 100%;
+    min-height:800px;
+    border :1px solid;
+
+    display:flex;
+}
+.wrapper>main>section>aside{
+    width : 200px;
+    height : 100vh;
+    border-right:1px solid;
+    margin-right : 15px;
+    padding : 20px;
+
+    position:relative;
+    z-index:1000;
+
+    background-color: white;
+  
+}
+
+.wrapper>main>section>aside>ul{
+
+}
+.wrapper>main>section>aside>ul>li{
+    border : 1px solid;
+   
+}
+.wrapper>main>section>aside>ul>li>a{
+    display:block;
+    text-decoration: none;
+    color : black;
+    text-align:center;
+    border-bottom : 1px solid;
+    padding : 10px;
+  
+}
+
+.wrapper>main>section>article{
+    width : 100%;
+    height : 100%;
+    height : 100vh;
+    padding : 20px;
+
+    position:relative;
+    background-color: white;
+}
+.wrapper>main>section>article>ul{}
+.wrapper>main>section>article>ul>li{
+
+}
+.wrapper>main>section>article>ul>li>a{
+    display:block;
+
+    
+}
+
+.wrapper>footer{}
+
+
+
+.todo-item{
+    width : 300px;
+    height : 300px;
+    border : 1px solid;
+
+    position:absolute;
+    background-color:white;
+    /* background-color: #FFD65C;; */
+    z-index : 5;
+    
+    box-shadow: 5px 5px 5px lightgray;;
+
+}
+.timer-item{
+    width : 200px;
+    height : 200px;
+    border : 1px solid;
+
+    position:absolute;
+    background-color:yellowgreen;
+    z-index : 5;
+}
+
+
+
+.item{
+    position: relative;
+    overflow : auto;   
+    padding : 5px;
+}
+.item>*>*{
+    margin-bottom:5px;
+}
+.item::-webkit-scrollbar{
+    display:none;
+}   
+.item:before{
+    display:block;
+    border-top:10px solid black;
+    border-left:10px solid red;
+    border-right:10px solid orange;
+    border-bottom:10px solid blue;
+
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:5555;
+    width : 50px;
+    height :50px;
+    background-color: red;
+}
+
+.cancelBtn{
+    position:absolute;
+    right:-25px;
+    top:-1px;
+    z-index:7000;
+    width:25px;
+    height:25px;
+    border:1px solid black;
+    background-color : white;
+    color : black;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.resizeBtn{
+    position:absolute;
+    right:-120px;
+    top:0px;
+    z-index:1000;
+    width:120px;
+    height:25px;
+    border:1px solid;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#todo{
+    display:relative;
+}
+#todo::after{
+    content : "todo";
+    display:block;
+    position:relative;
+    left:0;
+    top:0;
+    width : 100%;
+    height :20px;
+    line-height:20px;
+    text-align: center;
+
+}
+.todo-checker{
+    position:absolute;;
+    left:0;
+    top:0;
+    height :35px ;
+    background-color: royalblue;;
+    opacity: .3;
+    display:block;
+    width : 100%;
+
+}
+
+#timer{
+    display:relative;
+}
+#timer::after{
+    content : "timer";
+    display:block;
+    position:relative;
+    left:0;
+    top:0;
+    width : 100%;
+    height :20px;
+    line-height:20px;
+    text-align: center;
+}
+#clock{
+    display:relative;
+}
+#clock::after{
+    content : "clock";
+    display:block;
+    position:relative;
+    left:0;
+    top:0;
+    width : 100%;
+    height :20px;
+    line-height:20px;
+    text-align: center;
+
+}

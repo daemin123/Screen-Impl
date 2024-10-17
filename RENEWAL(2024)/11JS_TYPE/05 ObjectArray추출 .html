@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="JS/meme.js"></script>
+</head>
+<body>
+    
+    <script>
+        //JS파일만들기(서버x)
+        
+        //JSON파일만들기(서버o)
+
+ 
+        
+        //전체정보
+        console.log("중구맛집All",중구맛집);
+
+        //Data배열만 추출
+        const 중구맛집_data = 중구맛집.data;
+        console.log("중구맛집_data",중구맛집_data);
+
+        //FD_CS(음식카테고리) 가 '한식'인 맛집만 추출
+        const 중구한식식당 =  중구맛집_data.filter((item)=>{return item.FD_CS === '한식'});
+        console.log("중구한식식당",중구한식식당);
+
+        //idx 가 1인 식당 선택
+        const 춘천옥= 중구한식식당[1];
+        console.log("춘천옥식당",춘천옥);
+
+        //춘천옥 식당의 MNU 추출
+        const 춘천옥MENUS = 춘천옥.MNU;
+        console.log("춘천옥식당의 메뉴들",춘천옥MENUS);
+
+        //MNU를 {메뉴명:가격} 로 변경 저장
+        console.log("춘천옥MENUS가 배열인지? " ,Array.isArray(춘천옥MENUS));
+        
+        //split을 이용해서 <br />을 제거한 뒤 배열로 저장
+        const 춘천옥MENU_ARR =  춘천옥MENUS.split("<br />");
+        console.log("춘천옥MENU_ARR가 배열인지? " ,Array.isArray(춘천옥MENU_ARR));
+        console.log('춘천옥MENU_ARR',춘천옥MENU_ARR);
+
+        //춘천옥MENU_ARR 을 {name:메뉴명,price:가격} 형태로 재배열
+        let menu_map=[];
+        for(i in 춘천옥MENU_ARR){
+                tmp_arr =  춘천옥MENU_ARR[i].split(' ');
+                tmp_obj = {name:tmp_arr[0],price:tmp_arr[1]}
+                menu_map.push(tmp_obj);
+        }
+        console.log("menu_map :",menu_map);
+
+
+        //고객 주문 리스트 저장
+        const order1=
+        [
+            {oid:"1111-1111",menu:menu_map[0].name ,price:menu_map[0].price,amt:1,date:new Date()}, //idx 0
+            {oid:"1111-1112",menu:menu_map[1].name ,price:menu_map[1].price,amt:2,date:new Date()}, //idx 1
+            {oid:"1111-1113",menu:menu_map[2].name ,price:menu_map[2].price,amt:3,date:new Date()}, //idx 2
+        ]
+        console.log("order1",order1);
+
+        //총 결제해야되는 금액 map으로 추출
+        //1 각 item당 price , amt 를 추출(forEach,(map)!!!!,filter,reduce)
+        //2 price*amt 구하고    (reduce)
+        //3 price*amt 의 누적합 구하기 (reduce)
+        const step1= order1.map((item)=>{
+            return {price:  parseInt(item.price.replace(",","").replace("원",""))  ,amt:item.amt}
+        })
+        console.log("step1",step1);
+        
+        const total = step1.reduce( (totalprice,item)=>{
+            const price = item.price;
+            const amt = item.amt;
+            return totalprice +(price*amt);
+        } , 0);
+
+        console.log("총 지불액 : ",total);
+        console.log("-----------------------------");
+        const total2= order1.map((item)=>{
+            return {price:  parseInt(item.price.replace(",","").replace("원",""))  ,amt:item.amt}
+        }).reduce((totalprice,item)=>{
+            const price = item.price;
+            const amt = item.amt;
+            return totalprice +(price*amt);
+        } , 0)
+        
+        console.log("총 지불액 : ",total2);
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

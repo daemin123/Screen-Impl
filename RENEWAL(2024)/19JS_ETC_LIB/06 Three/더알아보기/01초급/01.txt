@@ -1,0 +1,18 @@
+1. Three.js란 무엇인가?
+Three.js는 웹에서 3D 그래픽스를 쉽게 렌더링할 수 있는 JavaScript 라이브러리입니다. 웹 브라우저에서 3D 장면을 만들고 조작할 수 있게 해줍니다. 
+WebGL을 기반으로 하며, 복잡한 3D 그래픽스를 쉽게 구현할 수 있도록 다양한 기능을 제공합니다.
+
+2. 기본 개념
+Three.js의 기본 개념은 다음과 같습니다:
+
+씬 (Scene): 3D 객체, 조명, 카메라 등을 포함하는 공간입니다.
+카메라 (Camera): 3D 장면을 바라보는 시점을 정의합니다. 일반적으로 PerspectiveCamera와 OrthographicCamera 두 가지 종류가 사용됩니다.
+렌더러 (Renderer): 씬과 카메라를 사용하여 3D 장면을 화면에 그려주는 역할을 합니다. 보통 WebGLRenderer가 사용됩니다.
+3. 프로젝트 환경 설정
+Three.js를 사용하려면 다음과 같은 기본 파일 구조를 설정해야 합니다:
+
+HTML 파일: 웹 페이지의 기본 구조를 정의합니다.
+CSS 파일: 스타일을 정의합니다.
+JavaScript 파일: Three.js 코드 및 로직을 작성합니다.
+4. CDN을 이용한 Three.js 라이브러리 포함
+CDN(Content Delivery Network)을 사용하면 로컬 파일을 다운로드하지 않고도 Three.js를 사용할 수 있습니다. 이를 통해 최신 버전을 손쉽게 사용할 수 있습니다.

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{}
+        body{}
+        ul{list-style:none;padding:0px;}
+        a{text-decoration: none;color:black;}
+        .mainmenu{
+            border:1px solid black;
+            display: flex;
+            justify-content: space-around;
+        
+        }
+        .mainmenu>li{
+            border:1px solid green;
+            width:120px;
+            position:relative;
+        }
+        .mainmenu>li>a{
+            border:1px solid yellowgreen;
+            display:block;
+            text-align: center;
+            height:30px;
+            line-height: 30px;
+        }
+        .mainmenu>li>.submenu{
+            border:1px solid brown;
+            position:absolute;
+            left:0;
+            top:30px;
+            width:100%;
+            display:none;
+        }
+        .mainmenu>li>.submenu>li{
+            border:1px solid blue;
+            text-align: center;
+
+        }
+        .mainmenu>li>.submenu>li>a{ 
+            display:block;
+        }
+
+        .mainmenu:hover .submenu{
+            display: block;
+        }
+
+
+        /* .mainmenu::after{
+            content:'';
+            width:100vw;
+            height:400px;
+            position:absolute;
+            top:50px;
+            left:0px;
+            background-color:antiquewhite;
+            z-index:-2;
+            display:none;
+        }
+        .mainmenu:hover::after{
+            display:block;
+        } */
+    </style>
+</head>
+
+<body>
+<!-- 
+    1 .mainmenu>li>a>.submenu>li*5>a 
+    2 기본 스타일 설정
+    3 .mainmenu>li position :relative
+    4 .submenu position : absolute 
+    5 .mainmenu>li:hover .submenu
+    6 etc..
+-->
+
+    <ul class="mainmenu">
+        <li>
+            <a href="">MENU</a>
+            <ul class="submenu">
+                <li><a href="">SUBMENU1</a></li>
+                <li><a href="">SUBMENU2</a></li>
+                <li><a href="">SUBMENU3</a></li>
+                <li><a href="">SUBMENU4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">MENU</a>
+            <ul class="submenu">
+                <li><a href="">SUBMENU1</a></li>
+                <li><a href="">SUBMENU2</a></li>
+                <li><a href="">SUBMENU3</a></li>
+                <li><a href="">SUBMENU4</a></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+
+</html>

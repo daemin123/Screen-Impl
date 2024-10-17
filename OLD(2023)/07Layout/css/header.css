@@ -1,0 +1,14 @@
+        /* 헤더 */
+        .wrapper>header{
+            border:1px solid gray;
+            height:100px;
+
+        }
+        .wrapper>header>.top--header{
+            border:1px solid gray;  
+            height:40px;
+        }
+        .wrapper>header>nav{
+            border:1px solid gray;  
+            height:50px;
+        }

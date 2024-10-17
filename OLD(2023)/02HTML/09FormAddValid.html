@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        form : 사용자로부터 특정정보를 받아 서버로 전달하는데 사용되는 태그
+        action속성 : 전달받는 서버 페이지(URL)
+        method속성 : 서버로 요청시 전달하는 방식
+        Get : 사용자정보를 Query String으로 전달(기본값)
+        Post : 사용자정보를 Request body(Payload) 로 전달
+
+     -->
+
+    <form action="test.jsp" method="get">
+        <div>
+            <label for="username">이름 :</label> <input type="text" name="username" id="username" required />
+        </div>
+        <div>
+            <label for="age">나이 : </label> <input type="text" name="age" id="age" required  />
+        </div>
+        <div>
+            <label for="addr">주소 : </label><input type="text" name="addr" id="addr" required />
+        </div>
+        <div>
+            <label for="">메일 : </label><input type="email" name="usermail" placeholder="example@example.com" disabled />
+        </div>
+        <div>
+            <label for="">패스워드 : </label>
+            <input 
+            type="password" 
+            name="password" 
+            placeholder="Insert Password"  
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9!@#$%^&*()_+-=])[A-Za-z0-9!@#$%^&*()_+-=]{10,18}$"
+            required
+            oninvalid="this.setCustomValidity('영문소문자/대문자/특수문자/숫자중 3개이상 포함하고 길이는 10-18자사이어야합니다')"
+            />
+        </div>
+        <div>
+            <label for="">성별 : </label><input type="radio" name="gender" value="man"> 남 <input type="radio"
+                name="gender" value="woman"> 여
+        </div>
+        <div>
+            <label for="">취미 :</label>
+            <div>
+                <input type="checkbox" name="hobby" value="climing">등산&nbsp;
+                <input type="checkbox" name="hobby" value="golf">골프&nbsp;
+                <input type="checkbox" name="hobby" value="swimming">수영&nbsp;
+                <input type="checkbox" name="hobby" value="reading">독서&nbsp;
+            </div>
+        </div>
+        <div>
+            <label>메모 :</label><br>
+            <textarea cols="35" rows="15" name="memo" style="resize:none;"></textarea>
+        </div>
+        <div>
+            <label>PHONE :</label>
+            <div>
+                <select name="ph--ln">
+                    <option value="053">053</option>
+                    <option value="055">055</option>
+                    <option value="02" selected>02</option>
+                </select>
+                <span> - </span>
+                <input type="tel" pattern="[0-9]{3,4}"  required />
+                <span> - </span>
+                <input type="tel" pattern="[0-9]{4}" required />
+            </div>
+        </div>
+
+        <input type="submit" />
+    </form>
+
+</body>
+
+</html>
+
+
+<!-- 
+문제
+이름,나이,주소는 필수항목입니다.
+패스워드입력창을 하나만들고
+길이는 10-18자사이
+영문소문자/대문자/숫자/특수문자중
+3개이상을 포함하도록 Pattern설정하시고
+만약 유효하지 않은데이터가 입력되었을때
+
+메세지를(-생략-)
+(영문소문자/대문자/특수문자/숫자중 3개이상 포함하고 길이는 10-18자사이어야합니다)
+를 표시합니다.
+
+PHONE 두번째 필드에 들어가는 숫자가 0-9사이어야되고 3-4 길이를 가지도록 pattern
+PHONE 세번째 필드에 들어가는 숫자가 0-9사이어야되고 4 길이를 가지도록 pattern
+
+메일은 입력받지 않도록 처리하세요~ 
+-->

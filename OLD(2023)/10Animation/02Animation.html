@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{}
+        .animation-test{
+            width:400px;
+            margin:100px auto;
+        }
+        .animation-test>div{
+            width:400px;height:40px;background-color: orange;
+            color:white;
+            text-align: center;
+            line-height:40px;
+            border:1px solid black;
+            position:relative;
+        }
+
+        .animation-test>.d1{
+            animation-name:moving1;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-duration: 3s;
+        }
+        .animation-test>.d2{
+            animation-name:moving2;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-duration: 3s;
+        }
+        .animation-test>.d3{
+            animation-name:moving3;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-duration: 3s;
+        }
+
+        @keyframes moving1 {
+           from{top:100vh;}
+           to{top:0px;} 
+        }
+        @keyframes moving2 {
+           from{left:100vw;}
+           to{left:0px;} 
+        }
+        @keyframes moving3 {
+           from{top:100vh;left:100vw;}
+           to{top:0vh;left:0vw;} 
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="animation-test">
+        <div class="d1">HELLOWORLD</div>
+        <div class="d2">HELLOWORLD</div>
+        <div class="d3">HELLOWORLD</div>
+    </div>
+</body>
+</html>
